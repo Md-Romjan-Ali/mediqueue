@@ -19,7 +19,7 @@ const DeleteTutorModal = ({ tutor }) => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const res = await fetch(`http://localhost:5000/tutors/${tutor._id}`, {
+                    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/tutors/${tutor._id}`, {
                         method: "DELETE",
                         headers: {
                             authorization: `Bearer ${token?.token}`

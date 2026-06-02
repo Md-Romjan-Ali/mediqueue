@@ -53,7 +53,7 @@ const HowItWorks = () => {
                 {steps?.map((step, index) => (
                     <div
                         key={index}
-                        className="card bg-base-200 border border-base-300 hover:shadow-xl transition-all duration-300"
+                        className="card shadow-2xl hover:shadow-cyan-500 bg-base-200 border border-base-300 hover:border-green-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                     >
                         <div className="card-body">
                             <div className="mb-4">{step.icon}</div>

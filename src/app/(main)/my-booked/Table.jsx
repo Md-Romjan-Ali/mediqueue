@@ -1,22 +1,70 @@
-
+"use client"
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import toast from "react-hot-toast";
 import {
     FaPhone,
     FaCalendarAlt,
     FaCheckCircle,
     FaTimesCircle,
+    FaTrash,
 } from "react-icons/fa";
+import Swal from "sweetalert2";
 
-const BookingTable = async ({ bookings }) => {
+const BookingTable = ({ bookings }) => {
 
+    const router = useRouter()
 
+    const update = {
+        status: 'Cancelled'
+    }
+    const cancellHandle = async (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Cancell it!"
+        }).then(async (result) => {
+
+            if (result.isConfirmed) {
+                const res = await fetch(`http://localhost:5000/bookingtutor/${id}`, {
+                    method: "PATCH",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(update)
+                })
+                const req = await res.json()
+                if (req.modifyCount > 0) {
+                    Swal.fire({
+                        title: "Cancelled!",
+                        text: "Your file has been Cancelled.",
+                        icon: "success"
+                    });
+                    router.refresh()
+                }
+            }
+        });
+    }
+    const deleteHandle = async (id) => {
+        const res = await fetch(`http://localhost:5000/bookingtutor/${id}`, {
+            method: "DELETE"
+        })
+        const req = await res.json()
+        router.refresh()
+        toast.success('Delete Succefull!')
+    }
 
     return (
         <div className="overflow-x-auto max-w-7xl mx-auto">
             <table className="table table-zebra">
                 <thead>
                     <tr className="bg-base-200">
-                        <th>sl No.</th>
+                        <th>Sl.</th>
                         <th>Tutor Info</th>
                         <th>Student Info</th>
                         <th>Phone</th>
@@ -29,9 +77,9 @@ const BookingTable = async ({ bookings }) => {
 
                 <tbody>
                     {bookings?.map((booking, index) => (
+
                         <tr key={booking?._id}>
                             <th>{index + 1}</th>
-
                             {/* Student Info */}
                             <td>
                                 <div className="flex items-center gap-3">
@@ -52,7 +100,7 @@ const BookingTable = async ({ bookings }) => {
                                             {booking?.tutorName}
                                         </div>
                                         <div className="text-sm opacity-70">
-                                            {booking?.studentEmail}
+                                            {booking?.subject}
                                         </div>
                                     </div>
                                 </div>
@@ -107,12 +155,13 @@ const BookingTable = async ({ bookings }) => {
                             {/* Action */}
                             <td className="flex justify-center">
                                 {booking?.status === "confirm" ? (
-                                    <button className="">
+                                    <button onClick={() => cancellHandle(booking._id)} className="">
                                         Cancell
                                     </button>
                                 ) : (
-                                    <button className="text-3xl">
-                                        -
+                                    <button onClick={() => deleteHandle(booking?._id)} className="text-lg flex items-center gap-1 btn btn-error btn-outline">
+                                        <FaTrash />
+                                        Delete
                                     </button>
                                 )}
                             </td>

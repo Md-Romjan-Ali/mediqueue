@@ -55,7 +55,7 @@ const WhyChooseUs = () => {
                 {features?.map((feature, index) => (
                     <div
                         key={index}
-                        className="bg-base-200 rounded-2xl p-8 border border-base-300 hover:border-green-500 transition-all duration-300"
+                        className="bg-base-200 shadow-2xl hover:shadow-cyan-500 rounded-2xl p-8 border border-base-300 hover:-translate-y-2 hover:border-green-500 transition-all duration-300"
                     >
                         <div className="mb-5">{feature.icon}</div>
 

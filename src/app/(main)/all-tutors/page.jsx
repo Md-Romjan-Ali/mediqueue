@@ -5,7 +5,7 @@ import React from 'react';
 const AlltutorPage = async () => {
     const tutorsData = await tutors();
     return (
-        <div>
+        <div className='mt-10'>
             <SearchPage tutorsData={tutorsData}></SearchPage>
         </div>
     );

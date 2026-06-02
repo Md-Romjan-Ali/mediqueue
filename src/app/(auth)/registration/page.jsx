@@ -1,5 +1,5 @@
 "use client";
-
+import { motion } from "motion/react"
 import { authClient } from "@/lib/auth-client";
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
@@ -44,7 +44,13 @@ const RegisterForm = () => {
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-950 px-4">
 
-            <div className="w-full max-w-md bg-gray-900 shadow-2xl rounded-3xl p-8">
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{
+                    opacity: 1,
+                    transition: { duration: 1 }
+                }}
+                className="w-full max-w-md bg-gray-900 shadow-2xl rounded-3xl p-8">
 
                 {/* Heading */}
                 <div className="text-center mb-6">
@@ -164,7 +170,7 @@ const RegisterForm = () => {
                     <FcGoogle className="text-2xl" />
                     Continue with Google
                 </button>
-            </div>
+            </motion.div>
         </div>
     );
 };

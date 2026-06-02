@@ -38,7 +38,7 @@ export default function Footer() {
                         <ul className="space-y-3 text-sm">
                             <li>
                                 <Link
-                                    href="/find-tutors"
+                                    href="/"
                                     className="transition hover:text-cyan-400"
                                 >
                                     Find Tutors
@@ -47,7 +47,7 @@ export default function Footer() {
 
                             <li>
                                 <Link
-                                    href="/book-session"
+                                    href="/"
                                     className="transition hover:text-cyan-400"
                                 >
                                     Book Session
@@ -56,7 +56,7 @@ export default function Footer() {
 
                             <li>
                                 <Link
-                                    href="/online-classes"
+                                    href="/"
                                     className="transition hover:text-cyan-400"
                                 >
                                     Online Classes
@@ -65,7 +65,7 @@ export default function Footer() {
 
                             <li>
                                 <Link
-                                    href="/become-tutor"
+                                    href="/"
                                     className="transition hover:text-cyan-400"
                                 >
                                     Become a Tutor
@@ -95,32 +95,28 @@ export default function Footer() {
 
                         <div className="flex items-center gap-4">
                             <Link
-                                href="https://facebook.com"
-                                target="_blank"
+                                href="/"
                                 className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 transition hover:border-cyan-400 hover:text-cyan-400"
                             >
                                 <FaFacebookF />
                             </Link>
 
                             <Link
-                                href="https://github.com"
-                                target="_blank"
+                                href="/"
                                 className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 transition hover:border-cyan-400 hover:text-cyan-400"
                             >
                                 <FaGithub />
                             </Link>
 
                             <Link
-                                href="https://linkedin.com"
-                                target="_blank"
+                                href="/"
                                 className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 transition hover:border-cyan-400 hover:text-cyan-400"
                             >
                                 <FaLinkedinIn />
                             </Link>
 
                             <Link
-                                href="https://discord.com"
-                                target="_blank"
+                                href="/"
                                 className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 transition hover:border-cyan-400 hover:text-cyan-400"
                             >
                                 <FaDiscord />

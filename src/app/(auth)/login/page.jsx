@@ -1,4 +1,5 @@
 "use client"
+import { motion } from "motion/react"
 import { authClient } from '@/lib/auth-client';
 import { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
@@ -26,7 +27,14 @@ const LoginPage = () => {
     }
     return (
         <div>
-            <div className="min-h-screen flex items-center justify-center bg-gray-950 px-4">
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{
+                    opacity: 1,
+                    transition: { duration: 1 }
+                }}
+
+                className="min-h-screen flex items-center justify-center bg-gray-950 px-4">
 
                 <div className="w-full max-w-md bg-gray-900 shadow-2xl rounded-3xl p-8">
 
@@ -121,8 +129,8 @@ const LoginPage = () => {
                         Continue with Google
                     </button>
                 </div>
-            </div>
-        </div>
+            </motion.div>
+        </div >
     );
 };
 

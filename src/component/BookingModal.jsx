@@ -33,10 +33,11 @@ const BookingModal = ({ tutor }) => {
             curentDate,
             status: 'confirm',
             slot: tutor?.totalSlot,
-            image: tutor?.photo
+            image: tutor?.photo,
+            subject: tutor?.subject
         }
 
-        const res = await fetch(`http://localhost:5000/bookingtutor`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/bookingtutor`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -45,7 +46,7 @@ const BookingModal = ({ tutor }) => {
             body: JSON.stringify(data)
         })
         const req = await res.json()
-        console.log(req);
+        router.push("/my-booked")
         toast.success("booking Succesfull")
 
     }
@@ -109,7 +110,7 @@ const BookingModal = ({ tutor }) => {
                         <div>
                             <label className="label">
                                 <span className="label-text font-medium">
-                                    Tutor ID
+                                    StudentId
                                 </span>
                             </label>
 
@@ -133,7 +134,7 @@ const BookingModal = ({ tutor }) => {
                             <input
                                 type="text"
                                 name="tutorName"
-                                value={tutor.tutorName}
+                                value={tutor?.tutorName}
                                 readOnly
                                 className="input w-full"
                             />

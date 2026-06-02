@@ -71,19 +71,18 @@ const DisplyCard = ({ tutor }) => {
                 </h2>
 
                 {/* Subject */}
-                <p className="text-lg text-gray-600 bg-green-50 py-1 px-3 rounded-xl font-semibold">
-                    <span className="text-gray-500">Subject:</span>
+                <p className="text-lg text-gray-600 hover:bg-amber-200 py-1 px-1  rounded-xl font-semibold">
                     <span className="font-semibold text-gray-800 capitalize">
                         {tutor?.subject}
                     </span>
                 </p>
                 {/* Experience */}
                 <div className="mt-4">
-                    <p className="text-xs font-medium text-gray-500 mb-1">
+                    <p className="text-xl font-medium text-gray-400 mb-1">
                         Experience
                     </p>
 
-                    <p className="text-sm text-gray-700 leading-relaxed line-clamp-2">
+                    <p title={`${tutor?.experience}`} className="text-sm text-gray-700  leading-relaxed line-clamp-2">
                         {tutor?.experience}
                     </p>
                 </div>

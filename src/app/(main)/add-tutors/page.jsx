@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "motion/react"
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -38,7 +39,7 @@ export default function AddTutorForm() {
         e.preventDefault();
         const { data: token } = await authClient.token()
         console.log(token?.token, 'from add post');
-        const res = await fetch(`http://localhost:5000/tutors`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/tutors`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -57,7 +58,13 @@ export default function AddTutorForm() {
 
     return (
         <section className="bg-[#07111F] px-4 py-12 lg:px-8">
-            <div className="mx-auto max-w-3xl rounded-3xl border border-white/10 bg-white/5 p-6 md:p-10">
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{
+                    opacity: 1,
+                    transition: { duration: 1 }
+                }}
+                className="mx-auto max-w-3xl rounded-3xl border border-white/10 bg-white/5 p-6 md:p-10">
 
                 <h2 className="mb-8 text-3xl font-bold text-white">
                     Add Tutor (Step {step}/3)
@@ -225,7 +232,7 @@ export default function AddTutorForm() {
                     )}
 
                 </form>
-            </div>
+            </motion.div>
         </section>
     );
 }

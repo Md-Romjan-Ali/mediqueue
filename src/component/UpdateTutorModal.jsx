@@ -14,7 +14,7 @@ const UpdateTutorModal = ({ tutor }) => {
         const formData = new FormData(e.target)
         const data = Object.fromEntries(formData.entries())
 
-        const res = await fetch(`http://localhost:5000/tutors/${tutor._id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/tutors/${tutor._id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
